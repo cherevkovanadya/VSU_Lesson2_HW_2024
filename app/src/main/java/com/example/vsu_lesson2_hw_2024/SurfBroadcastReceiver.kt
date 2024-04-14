@@ -16,6 +16,11 @@ class SurfBroadcastReceiver : BroadcastReceiver() {
                 Toast.LENGTH_LONG
             ).show()
             Log.d("receiver", "$message")
+            val sharedPreferences =
+                context?.getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
+            val editor = sharedPreferences?.edit()
+            editor?.putString("MESSAGE", message)
+            editor?.apply()
         }
     }
 
